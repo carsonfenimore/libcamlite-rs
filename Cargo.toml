@@ -1,0 +1,13 @@
+[package]
+name = "libcamlite-rs"
+version = "0.1.0"
+edition = "2021"
+build = "build.rs"
+
+[dependencies]
+cpp = "0.5.7"
+
+
+[build-dependencies]
+bindgen = "0.69.4"
+cpp_build = "0.5.7"
