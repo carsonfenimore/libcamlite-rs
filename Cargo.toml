@@ -5,9 +5,7 @@ edition = "2021"
 build = "build.rs"
 
 [dependencies]
-cpp = "0.5.7"
-
+cxx = "1.0"
 
 [build-dependencies]
-bindgen = "0.69.4"
-cpp_build = "0.5.7"
+cxx-build = "1.0"
