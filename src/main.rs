@@ -14,8 +14,6 @@ mod ffi {
         framerate: u8,
     }
 
-
-
     extern "Rust" {
         type LibCamWrapCallback;
         unsafe fn callbackH264(&self,bytes: *mut u8, count: usize, timestamp_us: i64, keyframe: bool );
@@ -29,7 +27,7 @@ mod ffi {
         fn new_libcamwrap() -> UniquePtr<LibCamWrap>;
         unsafe fn setCallback(&self, obj: Box<LibCamWrapCallback> ) ;
         fn setupLowres(&self, params: StreamParams);
-        fn setupH264(&self, params: StreamParams);
+        fn setupH264(&self, params: StreamParams, intra: u8, profile: String, bitrate: String);
         fn run(&self);
     }
 
@@ -71,7 +69,7 @@ fn main() {
     println!("Setup high res stream\n");
     let h264Params = ffi::StreamParams{ width: 1920, height: 1080, format:  ffi::StreamFormat::STREAM_FORMAT_H264, framerate: 30};
     println!("Calling into setupH264\n");
-    client.setupH264(h264Params);
+    client.setupH264(h264Params, 5, "main".to_owned(), "2mbps".to_owned());
 
     println!("Running...\n");
     client.run();

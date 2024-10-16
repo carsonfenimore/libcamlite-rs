@@ -15,7 +15,7 @@ public:
   LibCamWrap();
   void setCallback(rust::Box<LibCamWrapCallback> obj) const;
   void setupLowres(StreamParams params) const;
-  void setupH264(StreamParams params) const;
+  void setupH264(StreamParams paramsIn, uint8_t intra, rust::String profile, rust::String bitrate) const;
   void run() const;
 private:
   class Impl;
