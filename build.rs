@@ -10,14 +10,12 @@ fn submodules() -> PathBuf {
 }
 
 fn main() {
-    cxx_build::bridge("src/main.rs")
+    cxx_build::bridge("src/lib.rs")
         .file("cxx/wrap.cxx")
         .std("c++20")
         .debug(true)
-        .compile("libcamlite-rs");
+        .compile("rslibcamlite");
 
-    let manifestdir = manifest_dir();
-    let manifestdir_str = manifestdir.to_string_lossy();
     let submodules = submodules();
     let submodules_str = submodules.to_string_lossy();
 

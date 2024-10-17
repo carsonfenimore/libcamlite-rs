@@ -1,5 +1,5 @@
 #include "wrap.h"
-#include "libcamlite-rs/src/main.rs.h"
+#include "rslibcamlite/src/lib.rs.h"
 #include <algorithm>
 #include <functional>
 #include <chrono>

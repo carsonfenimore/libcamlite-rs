@@ -1,8 +1,12 @@
 [package]
-name = "libcamlite-rs"
+name = "rslibcamlite"
 version = "0.1.0"
 edition = "2021"
 build = "build.rs"
+
+[lib]
+name = "rslibcamlitelib"
+path = "src/lib.rs"
 
 [dependencies]
 cxx = "1.0"
