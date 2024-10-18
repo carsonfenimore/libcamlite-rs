@@ -3,6 +3,11 @@ name = "rslibcamlite"
 version = "0.1.0"
 edition = "2021"
 build = "build.rs"
+repository = "https://github.com/carsonfenimore/libcamlite-rs"
+license = "MIT"
+description = "Rust wrapper for libcamlite - h264/rgb stream access to rpi cameras"
+readme = "README.md"
+keywords = ["raspberry-pi", "camera", "h264", "rgb", "edge-ai"]
 
 [lib]
 name = "rslibcamlitelib"
