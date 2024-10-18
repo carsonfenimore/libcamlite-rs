@@ -1,4 +1,5 @@
 
+#[allow(non_snake_case, deprecated)]
 pub trait ExternalCallback {
     unsafe fn callbackH264(&mut self, _bytes: *mut u8, count: usize, timestamp_us: i64, keyframe: bool );
     unsafe fn callbackLowres(&mut self, _bytes: *mut u8, count: usize);
@@ -8,6 +9,7 @@ pub struct LibCamWrapCallback {
     pub cb: Box<dyn ExternalCallback> 
 }
 
+#[allow(non_snake_case, deprecated)]
 impl LibCamWrapCallback {
     unsafe fn callbackH264(&mut self, bytes: *mut u8, count: usize, timestamp_us: i64, keyframe: bool ){
         self.cb.callbackH264(bytes, count, timestamp_us, keyframe);
@@ -45,8 +47,8 @@ pub mod ffi {
 
         fn new_libcamwrap() -> UniquePtr<LibCamWrap>;
         fn setCallback(&self, obj: Box<LibCamWrapCallback> ) ;
-        fn setupLowres(&self, params: StreamParams);
-        fn setupH264(&self, params: StreamParams, intra: u8, profile: String, bitrate: String);
+        fn setupLowres(&self, params: &StreamParams);
+        fn setupH264(&self, params: &StreamParams, intra: u8, profile: &String, bitrate: &String);
         fn run(&self);
     }
 
@@ -59,9 +61,11 @@ pub mod ffi {
 }
 
 
+#[allow(non_snake_case, deprecated)]
 pub struct LibCamClient {
     pub client: cxx::UniquePtr<ffi::LibCamWrap>
 }
+#[allow(non_snake_case, deprecated)]
 impl LibCamClient {
     // Helper to make the rust side look a bit cleaner...
     pub fn new() -> Self {

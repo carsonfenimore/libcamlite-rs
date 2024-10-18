@@ -28,14 +28,14 @@ void LibCamWrap::setCallback(rust::Box<LibCamWrapCallback> obj) const {
 	impl->callbackObj = std::move(obj);
 }
 
-void LibCamWrap::setupLowres(StreamParams params) const {
+void LibCamWrap::setupLowres(const StreamParams& params) const {
 	//printf("Setup low res %dx%d\n", params.width, params.height);
 	libcamlite::LowResParams lowres;
 	lowres.stream = params;
 	impl->libcam.setupLowresStream(lowres, std::bind(&LibCamWrap::Impl::lowresCallback, impl.get(), _1, _2));
 }
 
-void LibCamWrap::setupH264(StreamParams paramsIn, uint8_t intra, rust::String profile, rust::String bitrate) const {
+void LibCamWrap::setupH264(const StreamParams& paramsIn, uint8_t intra, const rust::String& profile, const rust::String& bitrate) const {
 	H264Params params;
 	params.stream = paramsIn;
 	params.intraPeriod = intra;
