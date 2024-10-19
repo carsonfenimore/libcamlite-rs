@@ -1,13 +1,9 @@
 # libcamlite-rs
-Rust bindings for libcamlite
-
 This crate brings libcamlite support to rust!
 
-Specifically, this adds support for accessing libcamera-supported cameras on the raspberry pi.  It provides a simple, efficient API for getting both the H264 and RGB streams.  The H264 stream can be saved to a file or streamed over, say, RTSP (support not included).  The RGB stream is ideal for passing to an object detection library, such as torch or tflite.
+Libcamlite add support for accessing libcamera-supported cameras on the raspberry pi.  It provides a simple, efficient API for getting simultaneous H264 and RGB streams.  The H264 stream can be saved to a file or streamed over, say, RTSP (support not included).  The RGB stream is ideal for passing to an object detection library, such as torch or tflite.
 
-See https://github.com/carsonfenimore/libcamlite-rs-test for an example, which is roughly as follows:
-
-This shows that in a few lines, one can begin writing rust apps that make use of both the h264 and rgb streams.  Its about as simple as:
+As an example, in a few lines we can stream h264/rgb as follows:
 
     let libcam = LibCamClient::new();
 
@@ -21,7 +17,7 @@ This shows that in a few lines, one can begin writing rust apps that make use of
     libcam.setCallbacks(mycb);
     libcam.run();
 
-You should then see output like the following:
+You should then see output on the command line every second or so indicating received frames:
 
     low: 31 calls in past 1.0325267 seconds; 30.023436 calls/sec
     h264: 31 calls in past 1.0341291 seconds; 29.976913 calls/sec
@@ -33,3 +29,6 @@ All in this takes up about 70MB of ram and a load average of 0.5 on a raspberry 
 
 You can view the output.h264 file in VLC.  The PPM should be viewable in any image viewer.
 
+See https://github.com/carsonfenimore/libcamlite-rs-test for sample code.
+
+Note: 0.1.2 fixes the crate so that it builds the libcamlite dependency automatically.
