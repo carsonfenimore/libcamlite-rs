@@ -44,22 +44,18 @@ pub mod ffi {
     unsafe extern "C++" {
         include!("rslibcamlite/cxx/wrap.h");
         type LibCamWrap;
-
         fn new_libcamwrap() -> UniquePtr<LibCamWrap>;
-        fn setCallback(&self, obj: Box<LibCamWrapCallback> ) ;
-        fn setupLowres(&self, params: &StreamParams);
-        fn setupH264(&self, params: &StreamParams, intra: u8, profile: &String, bitrate: &String);
-        fn run(&self);
-    }
+        fn setCallback(self: &LibCamWrap, obj: Box<LibCamWrapCallback> ) ;
+        fn setupLowres(self: &LibCamWrap, params: &StreamParams);
+        fn setupH264(self: &LibCamWrap, params: &StreamParams, intra: u8, profile: &String, bitrate: &String);
+        fn run(self: &LibCamWrap);
 
-    unsafe extern "C++" {
         type StreamFormat;
-    }
-    unsafe extern "C++" {
+
         type StreamParams;
+
     }
 }
-
 
 #[allow(non_snake_case, deprecated)]
 pub struct LibCamClient {
@@ -86,3 +82,4 @@ impl LibCamClient {
 // Bring some needed wrappers out of ffi
 pub use ffi::StreamParams;
 pub use ffi::StreamFormat;
+

@@ -2,7 +2,6 @@ use std::env;
 use std::path::PathBuf;
 use std::process::Command;
 
-
 fn manifest_dir() -> PathBuf {
     PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap())
 }
@@ -35,6 +34,12 @@ fn main() {
         .std("c++20")
         .debug(true)
         .compile("rslibcamlite");
+
+    cc::Build::new()
+        .file("cxx/stream_info.c")
+        .cpp(true)
+        .include(submodules.join("libcamlite/src"))
+        .compile("stream_info");
 
     println!("cargo:rustc-link-arg=/usr/lib/aarch64-linux-gnu/libboost_program_options.so.1.74.0");
     println!("cargo:rustc-link-arg=/usr/local/lib/aarch64-linux-gnu/rpicam_app.so");

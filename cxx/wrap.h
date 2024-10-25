@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../submodules/libcamlite/src/libcamlite.hpp"
+#include "../submodules/libcamlite/src/stream_info.hpp"
 
 #include "rust/cxx.h"
 #include <memory>
@@ -25,4 +26,8 @@ private:
 
 std::unique_ptr<LibCamWrap> new_libcamwrap();
 
+
+std::unique_ptr<StreamInfo> new_streaminfo();
+
 }
+
