@@ -1,4 +1,13 @@
 
+use ffmpeg_sys_next as ff;
+
+extern "C" {
+    pub fn analyze(obj: *mut std::ffi::c_void, mem: *mut u8, count: usize) -> *mut ff::AVStream;
+    pub fn begin_analysis() -> *mut std::ffi::c_void;
+}
+
+pub use ff::AVStream;
+
 #[allow(non_snake_case, deprecated)]
 pub trait ExternalCallback {
     unsafe fn callbackH264(&mut self, _bytes: *mut u8, count: usize, timestamp_us: i64, keyframe: bool );
