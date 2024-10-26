@@ -17,7 +17,7 @@ public:
   void setCallback(rust::Box<LibCamWrapCallback> obj) const;
   void setupLowres(const StreamParams& params) const;
   void setupH264(const StreamParams& paramsIn, uint8_t intra, const rust::String& profile, const rust::String& bitrate) const;
-  void run() const;
+  void start(bool detach) const;
 private:
   class Impl;
   std::shared_ptr<Impl> impl;

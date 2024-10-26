@@ -44,8 +44,8 @@ void LibCamWrap::setupH264(const StreamParams& paramsIn, uint8_t intra, const ru
 	//printf("Setup H264 with res %dx%d\n", params.stream.width, params.stream.height);
 	impl->libcam.setupH264Stream(params, std::bind(&LibCamWrap::Impl::h264Callback, impl.get(), _1, _2, _3, _4));
 }
-void LibCamWrap::run() const{
-	impl->libcam.start();
+void LibCamWrap::start(bool detach) const{
+	impl->libcam.start(detach);
 }
 
 std::unique_ptr<LibCamWrap> new_libcamwrap() {
