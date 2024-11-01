@@ -48,6 +48,10 @@ void LibCamWrap::start(bool detach) const{
 	impl->libcam.start(detach);
 }
 
+void LibCamWrap::stop() const {
+	impl->libcam.stop();
+}
+
 std::unique_ptr<LibCamWrap> new_libcamwrap() {
   return std::make_unique<LibCamWrap>();
 }

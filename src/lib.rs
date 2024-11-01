@@ -58,6 +58,7 @@ pub mod ffi {
         fn setupLowres(self: &LibCamWrap, params: &StreamParams);
         fn setupH264(self: &LibCamWrap, params: &StreamParams, intra: u8, profile: &String, bitrate: &String);
         fn start(self: &LibCamWrap, detach: bool);
+        fn stop(self: &LibCamWrap);
 
         type StreamFormat;
 
@@ -81,6 +82,9 @@ impl LibCamClient {
     }
     pub fn start(&self, detach: bool) {
         self.client.start(detach);
+    }
+    pub fn stop(&self){
+        self.client.stop();
     }
     pub fn setCallbacks(&self, callbackObj: Box<dyn ExternalCallback>) {
         let cb = Box::new(LibCamWrapCallback{ cb: callbackObj });

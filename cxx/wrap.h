@@ -18,6 +18,7 @@ public:
   void setupLowres(const StreamParams& params) const;
   void setupH264(const StreamParams& paramsIn, uint8_t intra, const rust::String& profile, const rust::String& bitrate) const;
   void start(bool detach) const;
+  void stop() const;
 private:
   class Impl;
   std::shared_ptr<Impl> impl;
