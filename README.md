@@ -32,3 +32,7 @@ You can view the output.h264 file in VLC.  The PPM should be viewable in any ima
 See https://github.com/carsonfenimore/libcamlite-rs-test for sample code.
 
 Note: 0.1.2 fixes the crate so that it builds the libcamlite dependency automatically.
+
+
+## Building
+This library requires libcamera and rpicam-apps to be installed.  
