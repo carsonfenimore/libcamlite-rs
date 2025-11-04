@@ -1,6 +1,3 @@
-[submodule "libcamlite"]
-	path = libcamlite
-	url = https://github.com/carsonfenimore/libcamlite.git
 [submodule "submodules/libcamlite"]
 	path = submodules/libcamlite
 	url = https://github.com/carsonfenimore/libcamlite.git

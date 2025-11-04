@@ -41,7 +41,7 @@ fn main() {
         .include(submodules.join("libcamlite/src"))
         .compile("stream_info");
 
-    println!("cargo:rustc-link-arg=/usr/lib/aarch64-linux-gnu/libboost_program_options.so.1.74.0");
+    println!("cargo:rustc-link-arg=/usr/lib/aarch64-linux-gnu/libboost_program_options.so.1.83.0");
     println!("cargo:rustc-link-arg=/usr/local/lib/aarch64-linux-gnu/rpicam_app.so");
     println!("cargo:rustc-link-lib=camera");
     println!("cargo:rustc-link-lib=camera-base");
