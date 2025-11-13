@@ -34,6 +34,6 @@ You can then do the following:
 
 ```
 sudo apt install -y libclang-dev
-git submodule update --remote --recursive
+git submodule update --init
 cargo build
 ```
